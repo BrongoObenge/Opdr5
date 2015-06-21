@@ -1,5 +1,7 @@
 package nl.company.domain;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,17 +9,21 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import lombok.Data;
-
 @Data
 @Entity
-public class BetalingGegevens {
+public class AdvertentieReactie {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(name="eigenaar_naam")
-	private String eigenaarNaam;
+	@Column(name="text")
+	private String text;
 	
-	@Column(name="nummer")
-	private String nummer;
+	@Column(name="datum")
+	private Date datum;
+	
+	public AdvertentieReactie(String text){
+		this.text = text;
+		this.datum = new Date();
+	}
 }
