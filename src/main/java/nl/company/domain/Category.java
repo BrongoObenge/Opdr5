@@ -25,4 +25,12 @@ public class Category {
 	@ManyToMany
 	@JoinColumn(name="advertentie_id")
 	List<Advertentie> advertentie;
+	
+	public Category(String naam, Advertentie ad){
+		this.naam = naam;
+		this.addAdvertentie(ad);
+	}
+	public void addAdvertentie(Advertentie ad){
+		this.advertentie.add(ad);
+	}
 }

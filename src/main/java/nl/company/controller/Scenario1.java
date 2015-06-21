@@ -1,11 +1,11 @@
 package nl.company.controller;
 
-import java.util.List;
-
 import nl.company.domain.Advertentie;
 import nl.company.domain.AdvertentieReactie;
 import nl.company.domain.Bod;
+import nl.company.domain.Category;
 import nl.company.domain.Gebruiker;
+import nl.company.domain.iDeal;
 import nl.company.service.AdvertentieService;
 import nl.company.service.AdvertentieServiceImpl;
 import nl.company.service.GebruikerService;
@@ -31,7 +31,7 @@ public class Scenario1 extends SomeBaseClass{
 		//1
 		Gebruiker gebruiker1 = new Gebruiker("voornaam", "achternaam", "email@gmail.com", "S3cret");
 		Advertentie ad = new Advertentie("Te koop X", "Mooie X voor lage prijs" , 50);
-		
+		ad.addCategory(new Category("Y", ad));
 		//2
 		Gebruiker gebruiker2 = new Gebruiker("voornaam", "achternaam", "email@hotmail.com", "S3cret");
 		Gebruiker gebruiker3 = new Gebruiker("voornaam", "achternaam", "email@yohoo.com", "S3cret");
@@ -41,6 +41,7 @@ public class Scenario1 extends SomeBaseClass{
 		gebruiker3.addBod(new Bod(60, ad));
 		gebruiker4.addBod(new Bod(65, ad));
 		gebruiker2.addBod(new Bod(75, ad));
+		gebruiker2.setBetaling(new iDeal(2, 5));
 		
 		//4
 		ad.addReactie(gebruiker2.addReactie(new AdvertentieReactie("Mooie X!")));
